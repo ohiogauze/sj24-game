@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://u0ruqj7f2seb"]
+
+[ext_resource type="Script" path="res://modules/player/player.gd" id="1_lyh3o"]
+[ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="1_yjlt6"]
+[ext_resource type="Script" path="res://modules/player/controllers/camera.gd" id="2_jvlaa"]
+[ext_resource type="Script" path="res://modules/player/controllers/movement.gd" id="3_phmmg"]
+[ext_resource type="Script" path="res://modules/player/states/frozen.gd" id="3_q5c8r"]
+[ext_resource type="Script" path="res://modules/player/controllers/useables.gd" id="4_e5thc"]
+[ext_resource type="Script" path="res://modules/player/states/moving.gd" id="4_n0iee"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f27nv"]
+radius = 0.2
+height = 1.8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_lyh3o")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_f27nv")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+current = true
+
+[node name="RayCast" type="RayCast3D" parent="Camera"]
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="Camera" type="Node" parent="Controllers"]
+script = ExtResource("2_jvlaa")
+camera_path = NodePath("../../Camera")
+player_path = NodePath("../..")
+
+[node name="Movement" type="Node" parent="Controllers"]
+script = ExtResource("3_phmmg")
+path = NodePath("../..")
+
+[node name="Useables" type="Node" parent="Controllers"]
+script = ExtResource("4_e5thc")
+general_raycast_path = NodePath("../../Camera/RayCast")
+body_path = NodePath("../..")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_yjlt6")
+host = NodePath("..")
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("4_n0iee")
+
+[node name="Frozen" type="Node" parent="StateMachine"]
+script = ExtResource("3_q5c8r")

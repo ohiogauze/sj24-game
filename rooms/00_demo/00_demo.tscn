@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqyvh73780rx1"]
+
+[ext_resource type="PackedScene" uid="uid://u0ruqj7f2seb" path="res://modules/player/player.tscn" id="1_6ba55"]
+
+[sub_resource type="Environment" id="Environment_g1w8i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8vj7"]
+albedo_color = Color(0.690196, 1, 1, 1)
+
+[node name="00Demo" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_6ba55")]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.698303, -0.4414, 0.563506, 0, 0.787236, 0.616651, -0.715802, -0.430609, 0.549729, 0, 3, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_g1w8i")
+
+[node name="Geometry" type="Node" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(10, 1, 5)
+material = SubResource("StandardMaterial3D_s8vj7")
