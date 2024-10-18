@@ -3,9 +3,9 @@ extends Node
 
 
 const GRAVITY = 33.33
-const JUMP_SPEED = 6.66
+const JUMP_SPEED = 4.20
 
-@export var speed := 4.2
+@export var speed := 2.10
 @export_node_path("CharacterBody3D") var path
 @onready var body: CharacterBody3D = get_node(path)
 
