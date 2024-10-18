@@ -52,11 +52,21 @@ func display(data: Array):
 			"exit":
 				label.text = "Conversation ends abruptly"
 
+			# Increases the conversation counter.
+			"accumulate":
+				label.text = "Increase the conversation count by 1"
+
 
 			# Specific controls
 			"check":
 				var action = "not set" if item.is_negated else "set"
 				label.text = "if flag \"%s\" is %s" % [item.flag, action]
+				indentation += 1
+
+			"count":
+				print(item)
+				var action = "is at least" if item.at_least else "is"
+				label.text = "check if conversation count %s \"%s\"" % [action, item.value]
 				indentation += 1
 
 			"has":

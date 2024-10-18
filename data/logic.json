@@ -1,1 +1,1 @@
-[{"id":"obj_fridge","lines":[":check flag_is_set","\t:goto blonk",":end","","That's a fridge.",":set flag_is_set","","::blonk","Hi, I'm blonk."]},{"id":"scr_wake_up","lines":["I have woken up."]}]
+[{"id":"obj_fridge","lines":[":has beer","\t:goto have_beer",":end","",":count 0","\tOn initial inspection, you find nothing of note.",":end","",":count 1+","\tOn closer inspection, you find a beer!","\t:give beer",":end","",":accumulate","","::have_beer","","You already have the beer.","What more could you need?",":exit"]},{"id":"scr_wake_up","lines":["I have woken up."]}]

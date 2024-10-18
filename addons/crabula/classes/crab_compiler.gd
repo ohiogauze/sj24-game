@@ -96,6 +96,21 @@ static func _build_command(command: String, args: Array, is_negated: bool) -> Di
 					"flag": args[0],
 					"is_negated": is_negated,
 				})
+			
+		# Determines based on number of times dialogue hit.
+		# Appending a + means "at least".
+		"count":
+			var number = args[0].substr(0, args[0].length() - 1) if args[0].ends_with("+") else args[0]
+
+			if not number.is_valid_int():
+				return CrabCompiler._build_error("\"%s\" is not a valid input." % args[0])
+
+			return get_error.call(1, false, func ():
+				return {
+					"type": "count",
+					"value": int(number),
+					"at_least": args[0].ends_with("+")
+				})
 
 		# Sets a flag within the current hour.
 		# Negation determines whether true or false.
@@ -125,6 +140,13 @@ static func _build_command(command: String, args: Array, is_negated: bool) -> Di
 				return {
 					"type": "take",
 					"item": args[0],
+				})
+
+		# Adds one to the conversation counter.
+		"accumulate":
+			return get_error.call(0, false, func():
+				return {
+					"type": "accumulate"
 				})
 
 		## Other statements

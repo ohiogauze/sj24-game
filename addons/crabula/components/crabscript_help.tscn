@@ -33,10 +33,10 @@ Player is talking
 Player is again talking
 
 [b]Flags[/b]
-:set day2_8pm_alfred_shot
+:set ate_sandwich
 
-:check day2_8pm_alfred_shot
-	Wow! Alfred was shot!
+:check ate_sandwich
+	Wow! That sandwich was great.
 :end
 
 [b]Inventory[/b]
@@ -59,6 +59,19 @@ Player is again talking
 
 ::chat
 Hi there!
+
+[b]Count[/b]
+You can use :accumulate to add one to the current counter, and use :count as a control block.
+
+:count 0
+	You haven't hit this conversation before!
+:end
+
+:count 3+
+	You have hit this conversation at least 3 times!
+:end
+
+:accumulate
 
 [b]Exit[/b]
 Immediately ends the chat.
