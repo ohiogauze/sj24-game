@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://coe0lq3sc0qxx"]
+
+[ext_resource type="PackedScene" uid="uid://dx4vlb7ijiosg" path="res://addons/crabula/components/crabscript_input.tscn" id="1_ofodw"]
+[ext_resource type="Script" path="res://addons/crabula/components/crabscript_split_editor.gd" id="1_wd7ya"]
+[ext_resource type="PackedScene" uid="uid://c64nlvpmn0v7o" path="res://addons/crabula/components/crabscript_visualiser.tscn" id="2_csxra"]
+[ext_resource type="Script" path="res://addons/crabula/classes/crab_syntax_highlighter.gd" id="3_k0t1y"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_s2ciq"]
+symbol_color = Color(0, 1, 1, 1)
+keyword_colors = {
+"check": Color(0.576471, 0.439216, 0.858824, 1),
+"else": Color(0.576471, 0.439216, 0.858824, 1),
+"end": Color(0.576471, 0.439216, 0.858824, 1),
+"exit": Color(0.196078, 0.803922, 0.196078, 1),
+"give": Color(0.196078, 0.803922, 0.196078, 1),
+"goto": Color(0.196078, 0.803922, 0.196078, 1),
+"has": Color(0.576471, 0.439216, 0.858824, 1),
+"set": Color(0.196078, 0.803922, 0.196078, 1),
+"take": Color(0.196078, 0.803922, 0.196078, 1)
+}
+script = ExtResource("3_k0t1y")
+
+[node name="CrabscriptSplitEditor" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wd7ya")
+
+[node name="CrabscriptInput" parent="." instance=ExtResource("1_ofodw")]
+layout_mode = 2
+size_flags_horizontal = 3
+syntax_highlighter = SubResource("CodeHighlighter_s2ciq")
+
+[node name="CrabscriptVisualiser" parent="." instance=ExtResource("2_csxra")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="text_changed" from="CrabscriptInput" to="." method="_on_text_changed"]

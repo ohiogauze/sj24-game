@@ -1,0 +1,1 @@
+[{"id":"obj_fridge","lines":[":check flag_is_set","\t:goto blonk",":end","","That's a fridge.",":set flag_is_set","","::blonk","Hi, I'm blonk."]},{"id":"scr_wake_up","lines":["I have woken up."]}]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://kch724n6lgc3"]
+
+[ext_resource type="Script" path="res://addons/crabula/components/conversation_block.gd" id="1_mn0gq"]
+
+[sub_resource type="FontVariation" id="FontVariation_bupqp"]
+variation_embolden = 0.5
+
+[node name="ConversationBlock" type="HBoxContainer"]
+offset_right = 400.0
+offset_bottom = 62.0
+script = ExtResource("1_mn0gq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(800, 2.08165e-12)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Character" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_bupqp")
+text = "An Asshole"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "<insert text>"
+wrap_mode = 1
+scroll_fit_content_height = true

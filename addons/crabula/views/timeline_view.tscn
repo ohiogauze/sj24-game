@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://u5pl0k7aydcr"]
+
+[ext_resource type="Script" path="res://addons/crabula/views/timeline_view.gd" id="1_fx625"]
+[ext_resource type="PackedScene" uid="uid://cabi6wb6rcy5b" path="res://addons/crabula/components/crabscript_help.tscn" id="2_ooq67"]
+[ext_resource type="Script" path="res://addons/crabula/components/locations.gd" id="3_dtg4p"]
+[ext_resource type="Script" path="res://addons/crabula/components/logic_list.gd" id="4_nk401"]
+[ext_resource type="Script" path="res://addons/crabula/windows/add_new_dialog.gd" id="5_2ddpd"]
+[ext_resource type="PackedScene" uid="uid://coe0lq3sc0qxx" path="res://addons/crabula/components/crabscript_split_editor.tscn" id="6_ch2xa"]
+[ext_resource type="Script" path="res://addons/crabula/components/new_label.gd" id="6_st4iv"]
+[ext_resource type="Script" path="res://addons/crabula/components/template_selector.gd" id="8_g6gm7"]
+
+[node name="Timeline" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_fx625")
+
+[node name="CrabscriptHelp" parent="." instance=ExtResource("2_ooq67")]
+visible = false
+
+[node name="Useables" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 2.08165e-12)
+layout_mode = 2
+script = ExtResource("3_dtg4p")
+
+[node name="CharactersTitle" type="Label" parent="Useables"]
+layout_mode = 2
+text = "Useables"
+
+[node name="LogicList" type="Tree" parent="Useables"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 3
+hide_folding = true
+hide_root = true
+script = ExtResource("4_nk401")
+
+[node name="Add" type="Button" parent="Useables"]
+layout_mode = 2
+text = "Add New"
+
+[node name="AddNewDialog" type="ConfirmationDialog" parent="Useables/Add"]
+title = "Add New Item"
+initial_position = 2
+script = ExtResource("5_2ddpd")
+
+[node name="NewLabel" type="LineEdit" parent="Useables/Add/AddNewDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 51.0
+script = ExtResource("6_st4iv")
+
+[node name="Delete" type="Button" parent="Useables"]
+layout_mode = 2
+text = "Delete Selected"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Conversations" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Conversations"]
+layout_mode = 2
+
+[node name="Editing" type="Label" parent="VBoxContainer/HBoxContainer/Conversations/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Editing fridge"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Conversations/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Script Reference"
+
+[node name="CrabscriptSplitEditor" parent="VBoxContainer/HBoxContainer/Conversations" instance=ExtResource("6_ch2xa")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Conversations"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Conversations/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TemplateSelector" type="MenuButton" parent="VBoxContainer/HBoxContainer/Conversations/Toolbar/HBoxContainer"]
+layout_mode = 2
+text = "Use Template..."
+item_count = 1
+popup/item_0/text = "Different Follow-Up"
+script = ExtResource("8_g6gm7")
+editor_path = NodePath("../../../CrabscriptSplitEditor")
+
+[node name="Starters" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Conversations/Toolbar"]
+layout_mode = 2
+
+[connection signal="changed" from="Useables/LogicList" to="." method="_on_times_list_changed"]
+[connection signal="item_selected" from="Useables/LogicList" to="Useables/LogicList" method="_on_item_selected"]
+[connection signal="pressed" from="Useables/Add" to="Useables/Add/AddNewDialog" method="open"]
+[connection signal="added" from="Useables/Add/AddNewDialog" to="Useables/LogicList" method="add_new"]
+[connection signal="pressed" from="Useables/Delete" to="Useables/LogicList" method="remove_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Conversations/HBoxContainer/Button" to="CrabscriptHelp" method="show"]
+[connection signal="text_set" from="VBoxContainer/HBoxContainer/Conversations/CrabscriptSplitEditor" to="." method="_on_conversation_edited"]

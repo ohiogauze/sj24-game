@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx4vlb7ijiosg"]
+
+[ext_resource type="Script" path="res://addons/crabula/components/crabscript_input.gd" id="1_l0kr3"]
+[ext_resource type="Script" path="res://addons/crabula/classes/crab_syntax_highlighter.gd" id="1_uec1g"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_1pivx"]
+symbol_color = Color(0, 1, 1, 1)
+keyword_colors = {
+"check": Color(0.576471, 0.439216, 0.858824, 1),
+"else": Color(0.576471, 0.439216, 0.858824, 1),
+"end": Color(0.576471, 0.439216, 0.858824, 1),
+"exit": Color(0.196078, 0.803922, 0.196078, 1),
+"give": Color(0.196078, 0.803922, 0.196078, 1),
+"goto": Color(0.196078, 0.803922, 0.196078, 1),
+"has": Color(0.576471, 0.439216, 0.858824, 1),
+"set": Color(0.196078, 0.803922, 0.196078, 1),
+"take": Color(0.196078, 0.803922, 0.196078, 1)
+}
+script = ExtResource("1_uec1g")
+
+[node name="CrabscriptInput" type="CodeEdit"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 3
+text = ":has key
+	Jojo: Cry.
+:end"
+wrap_mode = 1
+syntax_highlighter = SubResource("CodeHighlighter_1pivx")
+gutters_draw_line_numbers = true
+indent_automatic = true
+script = ExtResource("1_l0kr3")

@@ -1,0 +1,256 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64nlvpmn0v7o"]
+
+[ext_resource type="Script" path="res://addons/crabula/components/crabscript_visualiser.gd" id="1_w2l7w"]
+
+[node name="CrabscriptVisualiser" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+script = ExtResource("1_w2l7w")
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="List"]
+layout_mode = 2
+text = "This is a long label. This is a long label. This is a long label. This is a long label. This is a long label. This is a long label. "
+
+[node name="Label2" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label3" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label4" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label5" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label6" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label7" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label8" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label9" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label10" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label11" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label12" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label13" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label14" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label15" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label16" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label17" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label18" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label19" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label20" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label21" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label22" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label23" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label24" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label25" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label26" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label27" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label28" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label29" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label30" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label31" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label32" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label33" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label34" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label35" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label36" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label37" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label38" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label39" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label40" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label41" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label42" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label43" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label44" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label45" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label46" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label47" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label48" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label49" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label50" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label51" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label52" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label53" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label54" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label55" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label56" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label57" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label58" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label59" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
+
+[node name="Label60" type="Label" parent="List"]
+layout_mode = 2
+text = "Label"
