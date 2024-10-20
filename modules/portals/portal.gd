@@ -1,3 +1,4 @@
+@tool
 class_name Portal
 extends Area3D
 ## Counts moves when player passes through.
@@ -9,13 +10,16 @@ const MAX_DISTANCE = 2.5
 
 func _ready() -> void:
 	body_entered.connect(func (body):
+		if not visible:
+			return
+
 		if body is Player:
 			ProgressManager.consume_move()
 	)
 
 
 func _process(_delta: float) -> void:
-	var camera := get_viewport().get_camera_3d()
+	var camera := EditorInterface.get_editor_viewport_3d(0).get_camera_3d() if Engine.is_editor_hint() else get_viewport().get_camera_3d() 
 	var camera_pos = Vector2(camera.global_position.x, camera.global_position.z)
 	var pos = Vector2(global_position.x, global_position.z)
 	var distance = camera_pos.distance_to(pos)
