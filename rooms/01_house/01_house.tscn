@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=16 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cmmtjln4y5rtt" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b5h2j6jrbdq4r" path="res://modules/hud/hud.tscn" id="4_ef6py"]
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="5_4xrjg"]
 [ext_resource type="PackedScene" uid="uid://dmx8b4sw6bn8s" path="res://objects/cupboard/cupboard.tscn" id="5_t3hu2"]
+[ext_resource type="PackedScene" uid="uid://t54kyl8fuxxb" path="res://modules/portals/single_width_portal.tscn" id="6_5p83s"]
 [ext_resource type="Script" path="res://rooms/01_house/states/intro.gd" id="6_gqxir"]
+[ext_resource type="PackedScene" uid="uid://cxncwsmx16umy" path="res://modules/portals/double_width_portal.tscn" id="7_og2be"]
 [ext_resource type="Script" path="res://rooms/01_house/states/conversation.gd" id="8_1eogj"]
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="8_cdra5"]
 [ext_resource type="Script" path="res://rooms/01_house/states/movement.gd" id="8_do8sy"]
@@ -109,6 +111,23 @@ omni_range = 3.185
 
 [node name="Cupboard" parent="Objects" instance=ExtResource("5_t3hu2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.74061, 0, -2)
+
+[node name="Portals" type="Node" parent="."]
+
+[node name="SpareBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -9)
+
+[node name="ChildBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
+
+[node name="MasterBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -3)
+
+[node name="Kitchen" parent="Portals" instance=ExtResource("7_og2be")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -6.5)
+
+[node name="LivingRoom" parent="Portals" instance=ExtResource("7_og2be")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3.5)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("5_4xrjg")
