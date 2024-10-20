@@ -28,6 +28,8 @@ var items := Set.new()
 ## Moves left in this loop.
 var moves_left := MOVES_PER_LOOP
 
+## Alerts that a door should be opened.
+signal door_opened(door: String)
 ## Alerts that the loop end conditions have been met.
 signal loop_ended
 ## Alerts that the number of moves left has changed.
@@ -78,6 +80,11 @@ func get_logical_counter(id: String) -> LogicalCounter:
 	var counter = LogicalCounter.new(id)
 	_logical_counters.append(counter)
 	return counter
+
+
+## Signals that a Door should be opened.
+func open_door(door: String) -> void:
+	door_opened.emit(door)
 
 
 ## Bubbles up a Useable usage.

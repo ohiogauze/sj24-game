@@ -60,6 +60,10 @@ func display(data: Array):
 			"activate":
 				label.text = "Activate Useable with ID of \"%s\"" % item.id
 
+			# Opens the door.
+			"open":
+				label.text = "Opens Door with name of \"%s\"" % item.door
+
 
 			# Specific controls
 			"check":

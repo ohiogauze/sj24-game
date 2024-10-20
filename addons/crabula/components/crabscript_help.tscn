@@ -78,6 +78,11 @@ You can use :activate to reactivate an object with the logic ID.
 
 :activate obj_fridge
 
+[b]Open Doors[/b]
+You can use :open to open a door object.
+
+:open MasterBedroom
+
 [b]Exit[/b]
 Immediately ends the chat.
 

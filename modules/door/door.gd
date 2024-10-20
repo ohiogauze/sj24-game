@@ -15,6 +15,11 @@ func _ready() -> void:
 	useable.logic_id = logic_id
 	useable.title = "Door to %s" % goes_to
 
+	ProgressManager.door_opened.connect(func (id):
+		if id == name:
+			open()
+	)
+
 	if portal_path:
 		var portal: Portal = get_node(portal_path)
 		portal.hide()

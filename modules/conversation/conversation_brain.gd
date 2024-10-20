@@ -119,6 +119,10 @@ func next():
 			ProgressManager.activate_useable(step.id)
 			next()
 
+		"open":
+			ProgressManager.open_door(step.door)
+			next()
+
 func next_else_or_end():
 	while current_step < steps.size():
 		current_step += 1

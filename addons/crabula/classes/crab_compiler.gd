@@ -158,6 +158,15 @@ static func _build_command(command: String, args: Array, is_negated: bool) -> Di
 					"id": args[0],
 				})
 
+		# Opens a Door with the given name
+		# eg. :open MasterBedroom
+		"open":
+			return get_error.call(1, false, func():
+				return {
+					"type": "open",
+					"door": args[0],
+				})
+
 		## Other statements
 
 		# Takes us to another conversation.
