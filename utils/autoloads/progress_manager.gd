@@ -56,6 +56,10 @@ func consume_move():
 func end_loop():
 	loop_ended.emit()
 
+	# For now, just reset all and restart room.
+	flags.data = {}
+	items.data = {}
+	get_tree().reload_current_scene()
 
 ## Start a new loop.
 func start_loop():

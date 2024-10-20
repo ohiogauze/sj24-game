@@ -38,4 +38,5 @@ func show_collider(useable: Useable) -> void:
 
 	active_reticle.show()
 	collider_info.get_node("Title").text = useable.title
+	collider_info.get_node("Disclaimer").text = "Starts A New Loop" if useable is Clock else "Costs 1 Move"
 	collider_info.show()

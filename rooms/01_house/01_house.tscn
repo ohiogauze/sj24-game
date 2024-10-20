@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=19 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cmmtjln4y5rtt" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://6yctjiffv1yc" path="res://objects/closet/closet.tscn" id="6_1f4ix"]
 [ext_resource type="PackedScene" uid="uid://t54kyl8fuxxb" path="res://modules/portals/single_width_portal.tscn" id="6_5p83s"]
 [ext_resource type="Script" path="res://rooms/01_house/states/intro.gd" id="6_gqxir"]
+[ext_resource type="PackedScene" uid="uid://er01i1j8kovx" path="res://objects/clock/clock.tscn" id="6_i7l0i"]
 [ext_resource type="PackedScene" uid="uid://cxncwsmx16umy" path="res://modules/portals/double_width_portal.tscn" id="7_og2be"]
 [ext_resource type="Script" path="res://rooms/01_house/states/conversation.gd" id="8_1eogj"]
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="8_cdra5"]
@@ -122,6 +123,9 @@ logic_id = "door_spare_bedroom"
 portal_path = NodePath("../../Portals/SpareBedroom")
 
 [node name="Objects" type="Node" parent="."]
+
+[node name="Clock" parent="Objects" instance=ExtResource("6_i7l0i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1.37964, -6)
 
 [node name="Closet" parent="Objects" instance=ExtResource("6_1f4ix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
