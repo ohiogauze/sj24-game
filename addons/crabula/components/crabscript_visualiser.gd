@@ -56,6 +56,10 @@ func display(data: Array):
 			"accumulate":
 				label.text = "Increase the conversation count by 1"
 
+			# Activates the Useable.
+			"activate":
+				label.text = "Activate Useable with ID of \"%s\"" % item.id
+
 
 			# Specific controls
 			"check":

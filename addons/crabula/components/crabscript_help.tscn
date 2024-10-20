@@ -73,6 +73,11 @@ You can use :accumulate to add one to the current counter, and use :count as a c
 
 :accumulate
 
+[b]Activation[/b]
+You can use :activate to reactivate an object with the logic ID.
+
+:activate obj_fridge
+
 [b]Exit[/b]
 Immediately ends the chat.
 

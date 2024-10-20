@@ -25,3 +25,7 @@ func at_least(value: int) -> bool:
 ## Count is equal to the provided value.
 func equals(value: int) -> bool:
 	return _count == value
+
+
+func get_id() -> String:
+	return _id

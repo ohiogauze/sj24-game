@@ -26,6 +26,7 @@ shape = SubResource("ConcavePolygonShape3D_j24ha")
 [node name="Useable" type="Area3D" parent="."]
 script = ExtResource("1_tn5nt")
 title = "Cupboard"
+logic_id = "obj_cupboard"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Useable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

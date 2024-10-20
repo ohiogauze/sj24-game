@@ -26,6 +26,7 @@ func _ready() -> void:
 ## Sets the move counter.
 func set_moves_left(moves_left: int) -> void:
 	move_counter.get_node("Count").text = str(moves_left)
+	move_counter.get_node("Title").text = "Move Left" if moves_left == 1 else "Moves Left"
 
 
 ## Shows info regarding the highlighted collider (if exists).

@@ -32,6 +32,10 @@ var moves_left := MOVES_PER_LOOP
 signal loop_ended
 ## Alerts that the number of moves left has changed.
 signal moves_left_changed(value: int)
+## Alerts that a Useable should be activated.
+signal useable_activated(id: String)
+## Alerts that a Useable has been used.
+signal useable_used(useable: Useable)
 
 
 ### LOOP FUNCTIONS
@@ -59,14 +63,23 @@ func start_loop():
 
 ### LOGIC FUNCTIONS
 
+## Signals that Useables should be activated.
+func activate_useable(id: String):
+	useable_activated.emit(id)
+
 ## Returns the logical counter for the ID. Creates if doesn't exist.
 func get_logical_counter(id: String) -> LogicalCounter:
 	# Try to find the counter and return it.
 	for counter in _logical_counters:
-		if id == counter.id:
+		if id == counter.get_id():
 			return counter
 
 	# If we can't find the counter, create one.
 	var counter = LogicalCounter.new(id)
 	_logical_counters.append(counter)
 	return counter
+
+
+## Bubbles up a Useable usage.
+func report_usage(useable: Useable) -> void:
+	useable_used.emit(useable)

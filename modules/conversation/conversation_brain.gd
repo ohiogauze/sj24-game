@@ -15,17 +15,18 @@ var current_indent: int
 var current_step: int
 
 
-func _init(given_id: String, given_steps: Array):
-	if given_steps.size() == 0:
-		given_steps = [{
+func _init(useable: Useable):
+	id = useable.logic_id
+	steps = LogicStore.get_steps(id)
+
+	if steps.size() == 0:
+		steps = [{
 			"type": "speech",
-			"speaker": given_id,
+			"speaker": id,
 			"message": "<NOT IMPLEMENTED>",
 		}]
 
-	counter = ProgressManager.get_logical_counter(given_id)
-	id = given_id
-	steps = given_steps
+	counter = ProgressManager.get_logical_counter(id)
 	current_indent = 0
 	current_step = -1
 
@@ -86,7 +87,12 @@ func next():
 
 		"count":
 			current_indent += 1
-			breakpoint
+			var fulfilled = counter.at_least(step.value) if step.at_least else counter.equals(step.value)
+			if fulfilled:
+				next()
+				return
+
+			next_else_or_end()
 
 		## Player gives the item to someone / something else.
 		"give":
@@ -107,6 +113,11 @@ func next():
 
 		"accumulate":
 			counter.add()
+			next()
+
+		"activate":
+			ProgressManager.activate_useable(step.id)
+			next()
 
 func next_else_or_end():
 	while current_step < steps.size():
@@ -120,5 +131,3 @@ func next_else_or_end():
 				return
 
 	ended.emit()
-
-

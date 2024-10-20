@@ -16,8 +16,9 @@ config/icon="res://assets/system/icon.svg"
 
 [autoload]
 
-CharacterStore="*res://addons/crabula/autoloads/character_store.gd"
+LogicStore="*res://utils/autoloads/logic_store.gd"
 ProgressManager="*res://utils/autoloads/progress_manager.gd"
+CharacterStore="*res://addons/crabula/autoloads/character_store.gd"
 
 [display]
 
