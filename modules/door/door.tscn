@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://dp6ihspjeug05"]
+
+[ext_resource type="Script" path="res://classes/interactive/useable.gd" id="1_c8ns8"]
+[ext_resource type="Script" path="res://modules/door/door.gd" id="1_l7vtn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80fca"]
+size = Vector3(1, 2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op1n1"]
+cull_mode = 2
+albedo_color = Color(0.5, 0.3075, 0.29, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4q6pl"]
+material = SubResource("StandardMaterial3D_op1n1")
+size = Vector2(1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cf0uw"]
+size = Vector3(1.05, 2, 0.1)
+
+[sub_resource type="Animation" id="Animation_hmsr8"]
+resource_name = "open"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0.999048, 0, 0.0436193)
+
+[sub_resource type="Animation" id="Animation_vctsx"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_op25x"]
+_data = {
+"RESET": SubResource("Animation_vctsx"),
+"open": SubResource("Animation_hmsr8")
+}
+
+[node name="Door" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_l7vtn")
+
+[node name="Hinge" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_80fca")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_4q6pl")
+skeleton = NodePath("../../..")
+
+[node name="Useable" type="Area3D" parent="Hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("1_c8ns8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/Useable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_cf0uw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_op25x")
+}
