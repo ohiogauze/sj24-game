@@ -22,3 +22,5 @@ func set_enabled(value: bool):
 
 func use():
 	used.emit()
+	set_enabled(false)
+	ProgressManager.consume_move()

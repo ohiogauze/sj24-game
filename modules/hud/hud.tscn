@@ -1,0 +1,166 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5h2j6jrbdq4r"]
+
+[ext_resource type="Script" path="res://modules/hud/hud.gd" id="1_7asgq"]
+[ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="2_5fx7h"]
+[ext_resource type="Script" path="res://modules/hud/states/blank.gd" id="3_ewf0f"]
+[ext_resource type="Script" path="res://modules/hud/states/conversation.gd" id="4_j7jmo"]
+[ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="4_rohaq"]
+[ext_resource type="Script" path="res://modules/hud/states/movement.gd" id="5_lk7h3"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7asgq")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_5fx7h")
+host = NodePath("..")
+
+[node name="Blank" type="Node" parent="StateMachine"]
+script = ExtResource("3_ewf0f")
+
+[node name="Conversation" type="Node" parent="StateMachine"]
+script = ExtResource("4_j7jmo")
+
+[node name="Movement" type="Node" parent="StateMachine"]
+script = ExtResource("5_lk7h3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LoopCounter" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -38.0
+offset_right = 88.0
+grow_vertical = 0
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="MarginContainer/Control/LoopCounter"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 19
+text = "Loop"
+
+[node name="Count" type="Label" parent="MarginContainer/Control/LoopCounter"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 38
+text = "INFINITE"
+horizontal_alignment = 1
+
+[node name="MoveCounter" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -38.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="Count" type="Label" parent="MarginContainer/Control/MoveCounter"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 38
+text = "INFINITE"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/Control/MoveCounter"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 19
+text = "Moves Left"
+
+[node name="Reticle" type="Control" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Active" type="ColorRect" parent="MarginContainer/Control/Reticle"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.509804, 1, 1, 0.501961)
+
+[node name="Default" type="ColorRect" parent="MarginContainer/Control/Reticle"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.501961)
+
+[node name="ColliderInfo" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 35.0
+offset_right = 245.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="MarginContainer/Control/ColliderInfo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 19
+text = "<COLLIDER>"
+horizontal_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="MarginContainer/Control/ColliderInfo"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rohaq")
+theme_override_font_sizes/font_size = 19
+text = "Costs 1 Move"
+horizontal_alignment = 1

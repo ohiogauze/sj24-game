@@ -17,6 +17,16 @@ config/icon="res://assets/system/icon.svg"
 [autoload]
 
 CharacterStore="*res://addons/crabula/autoloads/character_store.gd"
+ProgressManager="*res://utils/autoloads/progress_manager.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/dpi/allow_hidpi=false
 
 [editor_plugins]
 
