@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://6yctjiffv1yc"]
+
+[ext_resource type="Script" path="res://classes/interactive/useable.gd" id="1_n7hg2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vhb8"]
+albedo_color = Color(0.772339, 0.549465, 0.614526, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tmip1"]
+material = SubResource("StandardMaterial3D_7vhb8")
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j24ha"]
+data = PackedVector3Array(-0.5, 1, 0.25, 0.5, 1, 0.25, -0.5, -1, 0.25, 0.5, 1, 0.25, 0.5, -1, 0.25, -0.5, -1, 0.25, 0.5, 1, -0.25, -0.5, 1, -0.25, 0.5, -1, -0.25, -0.5, 1, -0.25, -0.5, -1, -0.25, 0.5, -1, -0.25, 0.5, 1, 0.25, 0.5, 1, -0.25, 0.5, -1, 0.25, 0.5, 1, -0.25, 0.5, -1, -0.25, 0.5, -1, 0.25, -0.5, 1, -0.25, -0.5, 1, 0.25, -0.5, -1, -0.25, -0.5, 1, 0.25, -0.5, -1, 0.25, -0.5, -1, -0.25, 0.5, 1, 0.25, -0.5, 1, 0.25, 0.5, 1, -0.25, -0.5, 1, 0.25, -0.5, 1, -0.25, 0.5, 1, -0.25, -0.5, -1, 0.25, 0.5, -1, 0.25, -0.5, -1, -0.25, 0.5, -1, 0.25, 0.5, -1, -0.25, -0.5, -1, -0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qahyy"]
+size = Vector3(1.1, 2, 0.6)
+
+[node name="Closet" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_tmip1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConcavePolygonShape3D_j24ha")
+
+[node name="Useable" type="Area3D" parent="."]
+script = ExtResource("1_n7hg2")
+title = "Closet"
+logic_id = "obj_child_bedroom_closet"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Useable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_qahyy")
