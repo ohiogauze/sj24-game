@@ -7,13 +7,20 @@ extends Area3D
 const MIN_DISTANCE = 1.0
 const MAX_DISTANCE = 2.5
 
+@onready var beep: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
+
 
 func _ready() -> void:
+	beep.stream = load("res://assets/sfx/move_spend.wav")
+	add_child(beep)
+
 	body_entered.connect(func (body):
 		if not visible:
 			return
 
 		if body is Player:
+			beep.pitch_scale = 0.96 + 0.08 * randf()
+			beep.play()
 			ProgressManager.consume_move()
 	)
 

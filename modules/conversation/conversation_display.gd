@@ -2,9 +2,8 @@ class_name ConversationDisplay
 extends Node
 ## Manages both text and camera of conversations.
 
-
-## Custom camera for pointing at NPCs / traveller.
-@onready var camera: Camera3D = $Camera
+## Audio player which beeps when text is added.
+@onready var beeper: AudioStreamPlayer = $Beeper
 ## Button which can be clicked to progress dialogue.
 @onready var clicker: Button = $Clicker
 ## Container holding the message and speaker labels.
@@ -20,8 +19,11 @@ signal next_requested
 
 ## Whether we can continue to the next line of dialogue.
 var finished_scrolling : get = _get_finished_scrolling
+## When the last beep was played.
+var last_beep_time := 0.0
 
 const SCROLL_SPEED := 69.420
+const MS_BETWEEN_BEEPS := 69.420
 
 
 func _ready() -> void:
@@ -30,6 +32,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if dialogue.visible and not finished_scrolling:
+		if Time.get_ticks_msec() - last_beep_time >= MS_BETWEEN_BEEPS:
+			last_beep_time = Time.get_ticks_msec()
+			beeper.pitch_scale = 0.96 + 0.08 * randf()
+			beeper.play()
 		message.visible_ratio += (SCROLL_SPEED / message.text.length()) * delta
 
 	continue_marker.visible = dialogue.visible and finished_scrolling

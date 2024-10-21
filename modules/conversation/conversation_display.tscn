@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clhcstmh05er8"]
+[gd_scene load_steps=4 format=3 uid="uid://clhcstmh05er8"]
 
 [ext_resource type="Script" path="res://modules/conversation/conversation_display.gd" id="1_63154"]
 [ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="2_dd850"]
+[ext_resource type="AudioStream" uid="uid://dkrr3jedqosmc" path="res://assets/sfx/dialogue_beep.wav" id="3_odiow"]
 
 [node name="ConversationDisplay" type="Node"]
 script = ExtResource("1_63154")
@@ -72,5 +73,8 @@ grow_horizontal = 2
 grow_vertical = 2
 action_mode = 0
 flat = true
+
+[node name="Beeper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_odiow")
 
 [connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
