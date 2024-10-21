@@ -1,31 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dp6ihspjeug05"]
+[gd_scene load_steps=11 format=3 uid="uid://dp6ihspjeug05"]
 
 [ext_resource type="Script" path="res://classes/interactive/useable.gd" id="1_c8ns8"]
 [ext_resource type="Script" path="res://modules/door/door.gd" id="1_l7vtn"]
+[ext_resource type="Texture2D" uid="uid://53yi5ca7n8al" path="res://modules/door/door.png" id="2_sedvm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80fca"]
 size = Vector3(1, 2, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op1n1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyf4l"]
 cull_mode = 2
-albedo_color = Color(0.5, 0.3075, 0.29, 1)
+albedo_texture = ExtResource("2_sedvm")
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4q6pl"]
-material = SubResource("StandardMaterial3D_op1n1")
+material = SubResource("StandardMaterial3D_jyf4l")
 size = Vector2(1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cf0uw"]
 size = Vector3(1.05, 2, 0.1)
-
-[sub_resource type="Animation" id="Animation_hmsr8"]
-resource_name = "open"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Hinge")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0.999048, 0, 0.0436193)
 
 [sub_resource type="Animation" id="Animation_vctsx"]
 length = 0.001
@@ -37,6 +29,16 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_hmsr8"]
+resource_name = "open"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.5, 1, 0, 0.999048, 0, 0.0436193)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_op25x"]
 _data = {
 "RESET": SubResource("Animation_vctsx"),
@@ -44,7 +46,6 @@ _data = {
 }
 
 [node name="Door" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_l7vtn")
 
 [node name="Hinge" type="Node3D" parent="."]
