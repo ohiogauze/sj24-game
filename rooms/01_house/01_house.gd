@@ -3,6 +3,8 @@ extends Node
 ## The house where gameplay takes place.
 
 
+## Background music.
+@onready var bgm: AudioStreamPlayer = $BGM
 ## Displays conversation.
 @onready var conversation_display: Node = $ConversationDisplay
 ## The shade over the screen.

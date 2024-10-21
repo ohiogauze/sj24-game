@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=3 uid="uid://emkdpwlhmoos"]
+
+[ext_resource type="Script" path="res://modules/main_menu/main_menu.gd" id="1_hskmc"]
+[ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="1_iugwb"]
+[ext_resource type="Script" path="res://classes/ui/curtain.gd" id="2_eq3wv"]
+[ext_resource type="PackedScene" uid="uid://bgk7nmhhrqdp7" path="res://modules/pause_menu/pause_menu.tscn" id="3_nfdaf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bttb2"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hskmc")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Screens" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_bttb2")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_bttb2")
+current_tab = 2
+tabs_visible = false
+
+[node name="Credits" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iugwb")
+theme_override_font_sizes/font_size = 38
+text = "A game by
+Sunita Berry
+Josef Frank
+Blake ???
+
+Created for
+SCREAM JAM 2024"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 0
+
+[node name="Warning" type="MarginContainer" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+metadata/_tab_index = 1
+
+[node name="Text" type="Label" parent="Screens/Warning"]
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iugwb")
+theme_override_font_sizes/font_size = 38
+text = "WARNING
+
+This game contains scenes of violence involving a minor.
+
+<WIP - May Need To Edit>"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PauseMenu" parent="Screens" instance=ExtResource("3_nfdaf")]
+layout_mode = 2
+
+[node name="Curtain" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_eq3wv")
+open_by_default = false

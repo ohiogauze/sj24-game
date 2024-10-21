@@ -28,6 +28,11 @@ target_position = Vector3(0, 0, -1.25)
 collision_mask = 257
 collide_with_areas = true
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera"]
+light_energy = 0.25
+spot_range = 1.75379
+spot_angle = 43.9405
+
 [node name="Controllers" type="Node" parent="."]
 
 [node name="Camera" type="Node" parent="Controllers"]
