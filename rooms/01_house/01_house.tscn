@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=37 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://rooms/01_house/states/conversation.gd" id="8_1eogj"]
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="8_cdra5"]
 [ext_resource type="Script" path="res://rooms/01_house/states/movement.gd" id="8_do8sy"]
+[ext_resource type="PackedScene" uid="uid://b0ax6acno0b71" path="res://objects/staticDoor/static_door.tscn" id="10_87qds"]
 [ext_resource type="PackedScene" uid="uid://clhcstmh05er8" path="res://modules/conversation/conversation_display.tscn" id="10_rwivb"]
 [ext_resource type="Script" path="res://rooms/01_house/states/pause.gd" id="16_h8ak8"]
 [ext_resource type="AudioStream" uid="uid://bq1h5m0t7takl" path="res://assets/bgm/cold-night.ogg" id="17_yqgjt"]
@@ -164,7 +165,7 @@ shape = SubResource("ConcavePolygonShape3D_w81vt")
 shape = SubResource("ConcavePolygonShape3D_21sm6")
 
 [node name="Player" parent="." instance=ExtResource("2_tucsf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39973, 0, -0.405817)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_moc6t")
@@ -231,23 +232,29 @@ omni_range = 3.185
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="ChildBedroom" parent="Doors" instance=ExtResource("5_wrobu")]
+[node name="GuestBedroom" parent="Doors" instance=ExtResource("5_wrobu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -6.5)
-goes_to = "Child Bedroom"
-logic_id = "door_child_bedroom"
-portal_path = NodePath("../../Portals/ChildBedroom")
+goes_to = "Guest Bedroom"
+logic_id = "door_guest_bedroom"
+portal_path = NodePath("../../Portals/GuestBedroom")
 
 [node name="MasterBedroom" parent="Doors" instance=ExtResource("5_wrobu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -2.5)
-goes_to = "Master Bedroom"
+goes_to = "Ms. Maude's Bedroom"
 logic_id = "door_master_bedroom"
 portal_path = NodePath("../../Portals/MasterBedroom")
 
-[node name="SpareBedroom" parent="Doors" instance=ExtResource("5_wrobu")]
+[node name="Bathroom" parent="Doors" instance=ExtResource("5_wrobu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -9.5)
-goes_to = "Spare Bedroom"
-logic_id = "door_spare_bedroom"
-portal_path = NodePath("../../Portals/SpareBedroom")
+goes_to = "Bathroom"
+logic_id = "door_bathroom"
+portal_path = NodePath("../../Portals/Bathroom")
+
+[node name="HallwayCloset" parent="Doors" instance=ExtResource("5_wrobu")]
+transform = Transform3D(0.999936, 0, -0.0112744, 0, 1, 0, 0.0112744, 0, 0.999936, -1.99014, 0, -1.51283)
+goes_to = "Hallway Closet"
+logic_id = "door_hallway_closet"
+portal_path = NodePath("")
 
 [node name="Objects" type="Node" parent="."]
 
@@ -260,12 +267,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
 [node name="Cupboard" parent="Objects" instance=ExtResource("5_t3hu2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.74061, 0, -2)
 
+[node name="StaticDoor" parent="Objects" instance=ExtResource("10_87qds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00947, 0, -1.45673)
+
+[node name="StaticDoor2" parent="Objects" instance=ExtResource("10_87qds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00521767, 0, -0.466274)
+
 [node name="Portals" type="Node" parent="."]
 
-[node name="SpareBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
+[node name="Bathroom" parent="Portals" instance=ExtResource("6_5p83s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -9)
 
-[node name="ChildBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
+[node name="GuestBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
 
 [node name="MasterBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
