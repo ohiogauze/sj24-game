@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0oljnalkuewe"
+uid="uid://b2204lr3h8wg0"
 path.s3tc="res://.godot/imported/01_house_4.png-ad0f78c86510562b605aaa6cb40c1663.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "94a4fcb5ca4a457a6f4e0f8e2710d8c1"
+"md5": "e49ee810f95abea71d1a8647d7a041e4"
 }
 
 [deps]
