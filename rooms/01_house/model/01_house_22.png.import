@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n1vvcvngnpwx"
-path.s3tc="res://.godot/imported/01_house_8.png-ed141f2cdc0e289f47e40c03c310dfeb.s3tc.ctex"
+uid="uid://bwj0jsnb2qxv7"
+path.s3tc="res://.godot/imported/01_house_22.png-5ee7345bb3173baaa3148b5a5b043cfa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5f8f413dda390b775b7b8986e007b44a"
+"md5": "87d2ccaa42c27a9a8a608e6b054cbb18"
 }
 
 [deps]
 
-source_file="res://rooms/01_house/model/01_house_8.png"
-dest_files=["res://.godot/imported/01_house_8.png-ed141f2cdc0e289f47e40c03c310dfeb.s3tc.ctex"]
+source_file="res://rooms/01_house/model/01_house_22.png"
+dest_files=["res://.godot/imported/01_house_22.png-5ee7345bb3173baaa3148b5a5b043cfa.s3tc.ctex"]
 
 [params]
 
