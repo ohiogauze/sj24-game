@@ -73,6 +73,17 @@ You can use :accumulate to add one to the current counter, and use :count as a c
 
 :accumulate
 
+[b]Loop[/b]
+Check which loop the player is on.
+
+:loop 1
+	You are on the first loop.
+:end
+
+:loop 3+
+	You are on at least the third loop.
+:end
+
 [b]Activation[/b]
 You can use :activate to reactivate an object with the logic ID.
 

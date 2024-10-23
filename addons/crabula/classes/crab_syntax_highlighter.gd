@@ -3,7 +3,7 @@ extends CodeHighlighter
 ## Highlights CrabScript correctly.
 
 func _init():
-	for keyword in ["has", "end", "check", "else", "count"]:
+	for keyword in ["has", "end", "check", "else", "count", "loop"]:
 		add_keyword_color(keyword, Color.MEDIUM_PURPLE)
 
 	for keyword in ["set", "give", "take", "goto", "exit", "accumulate", "activate", "open"]:

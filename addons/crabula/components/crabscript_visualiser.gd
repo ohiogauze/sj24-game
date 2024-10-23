@@ -72,9 +72,13 @@ func display(data: Array):
 				indentation += 1
 
 			"count":
-				print(item)
 				var action = "is at least" if item.at_least else "is"
 				label.text = "check if conversation count %s \"%s\"" % [action, item.value]
+				indentation += 1
+
+			"loop":
+				var action = "is at least" if item.at_least else "is"
+				label.text = "check if current loop %s \"%s\"" % [action, item.value]
 				indentation += 1
 
 			"has":
