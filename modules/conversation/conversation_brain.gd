@@ -94,6 +94,16 @@ func next():
 
 			next_else_or_end()
 
+		"loop":
+			current_indent += 1
+			var current_loop = ProgressManager.current_loop
+			var fulfilled = current_loop >= step.value if step.at_least else current_loop == step.value
+			if fulfilled:
+				next()
+				return
+
+			next_else_or_end()
+
 		## Player gives the item to someone / something else.
 		"give":
 			ProgressManager.items.remove(step.item)
