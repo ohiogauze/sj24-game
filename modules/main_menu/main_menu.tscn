@@ -74,9 +74,7 @@ theme_override_fonts/font = ExtResource("1_iugwb")
 theme_override_font_sizes/font_size = 38
 text = "WARNING
 
-This game contains scenes of violence involving a minor.
-
-<WIP - May Need To Edit>"
+This game contains scenes of violence involving a minor."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
