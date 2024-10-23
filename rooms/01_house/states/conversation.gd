@@ -46,6 +46,6 @@ func setup(data):
 		if not useable.logic_id.begins_with("scr_"):
 			ProgressManager.consume_move()
 
-		if ProgressManager.moves_left > 0:
+		if ProgressManager.moves_left > 0 or useable.logic_id.begins_with("scr_"):
 			state_machine.pop()
 	)

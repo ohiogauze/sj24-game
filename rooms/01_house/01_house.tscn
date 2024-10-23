@@ -1,8 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=49 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
 [ext_resource type="PackedScene" uid="uid://u0ruqj7f2seb" path="res://modules/player/player.tscn" id="2_tucsf"]
+[ext_resource type="AudioStream" uid="uid://3g8vgxb4fbmn" path="res://assets/sfx/static_loop.ogg" id="3_mtyv8"]
+[ext_resource type="AudioStream" uid="uid://d38mf7g3uhn3g" path="res://assets/sfx/stab.wav" id="4_5ethf"]
 [ext_resource type="PackedScene" uid="uid://b5h2j6jrbdq4r" path="res://modules/hud/hud.tscn" id="4_ef6py"]
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="5_4xrjg"]
 [ext_resource type="PackedScene" uid="uid://dp6ihspjeug05" path="res://modules/door/door.tscn" id="5_wrobu"]
@@ -17,6 +19,7 @@
 [ext_resource type="Script" path="res://classes/interactive/useable.gd" id="10_psrqn"]
 [ext_resource type="PackedScene" uid="uid://clhcstmh05er8" path="res://modules/conversation/conversation_display.tscn" id="10_rwivb"]
 [ext_resource type="Script" path="res://rooms/01_house/states/pause.gd" id="16_h8ak8"]
+[ext_resource type="Script" path="res://rooms/01_house/states/failure.gd" id="17_lylv4"]
 [ext_resource type="AudioStream" uid="uid://bq1h5m0t7takl" path="res://assets/bgm/cold-night.ogg" id="17_yqgjt"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vbqht"]
@@ -124,6 +127,13 @@ script = ExtResource("1_mxwit")
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yqgjt")
 parameters/looping = true
+
+[node name="Static" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mtyv8")
+parameters/looping = true
+
+[node name="Stab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5ethf")
 
 [node name="StructureModel" parent="." instance=ExtResource("1_h3fej")]
 
@@ -431,6 +441,18 @@ script = ExtResource("8_do8sy")
 [node name="Pause" type="Node" parent="StateMachine"]
 script = ExtResource("16_h8ak8")
 
+[node name="Failure" type="Node" parent="StateMachine"]
+script = ExtResource("17_lylv4")
+
+[node name="Red" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
 [node name="Curtain" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -442,5 +464,10 @@ script = ExtResource("8_cdra5")
 open_by_default = false
 
 [node name="ConversationDisplay" parent="." instance=ExtResource("10_rwivb")]
+
+[node name="FailureModels" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="FailureModels"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.375, 0.507, -4.638)
 
 [editable path="StructureModel"]
