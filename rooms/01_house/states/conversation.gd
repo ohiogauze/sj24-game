@@ -46,5 +46,5 @@ func setup(data):
 		consume_move_beep.play()
 
 		if ProgressManager.moves_left > 0:
-			state_machine.swap("Movement")
+			state_machine.pop()
 	)

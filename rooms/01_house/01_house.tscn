@@ -419,8 +419,6 @@ script = ExtResource("8_do8sy")
 [node name="Pause" type="Node" parent="StateMachine"]
 script = ExtResource("16_h8ak8")
 
-[node name="ConversationDisplay" parent="." instance=ExtResource("10_rwivb")]
-
 [node name="Curtain" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -430,5 +428,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("8_cdra5")
 open_by_default = false
+
+[node name="ConversationDisplay" parent="." instance=ExtResource("10_rwivb")]
 
 [editable path="StructureModel"]
