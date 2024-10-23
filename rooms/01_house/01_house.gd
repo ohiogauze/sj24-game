@@ -20,6 +20,13 @@ extends Node
 func _ready() -> void:
 	player.controllers.useables.changed.connect(hud.show_collider)
 	ProgressManager.useable_used.connect(start_conversation)
+	ProgressManager.loop_ended.connect(fail)
+	$FailureModels.hide()
+	$Red.hide()
+
+
+func fail() -> void:
+	state_machine.swap("Failure")
 
 
 func start_conversation(useable: Useable) -> void:

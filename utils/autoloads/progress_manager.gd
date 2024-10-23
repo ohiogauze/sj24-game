@@ -76,7 +76,6 @@ func end_loop():
 	get_tree().root.add_child(failure)
 	failure.play()
 	loop_ended.emit()
-	true_end_loop()
 
 func true_end_loop():
 	# For now, just reset all and restart room.
