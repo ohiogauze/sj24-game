@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpxg3wrxfw40i"
 path.s3tc="res://.godot/imported/knife.png-69c7721b585d75d4c1f411eee6c594cb.s3tc.ctex"
+path.etc2="res://.godot/imported/knife.png-69c7721b585d75d4c1f411eee6c594cb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/sprites/items/knife.png"
-dest_files=["res://.godot/imported/knife.png-69c7721b585d75d4c1f411eee6c594cb.s3tc.ctex"]
+dest_files=["res://.godot/imported/knife.png-69c7721b585d75d4c1f411eee6c594cb.s3tc.ctex", "res://.godot/imported/knife.png-69c7721b585d75d4c1f411eee6c594cb.etc2.ctex"]
 
 [params]
 
