@@ -41,9 +41,9 @@ func setup(data):
 	)
 	brain.ended.connect(func ():
 		dialogue_start.stop()
+		data.conversation_display.reset()
 
 		if not useable.logic_id.begins_with("scr_"):
-			data.conversation_display.reset()
 			ProgressManager.consume_move()
 			consume_move_beep.pitch_scale = 0.96 + 0.08 * randf()
 			consume_move_beep.play()
