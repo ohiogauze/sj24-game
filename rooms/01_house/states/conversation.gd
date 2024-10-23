@@ -40,6 +40,7 @@ func setup(data):
 		data.conversation_display.next_requested.connect(brain.next, CONNECT_ONE_SHOT)
 	)
 	brain.ended.connect(func ():
+		dialogue_start.stop()
 		data.conversation_display.reset()
 		ProgressManager.consume_move()
 		consume_move_beep.pitch_scale = 0.96 + 0.08 * randf()
