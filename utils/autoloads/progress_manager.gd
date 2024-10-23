@@ -3,16 +3,23 @@ extends Node
 
 ## Data structure enabling having only one of each item.
 class Set:
+	signal changed(data: Array)
+
 	var data = {}
 
 	func add(item: String) -> void:
 		data[item] = null
+		changed.emit(list())
 
 	func remove(item: String) -> void:
 		data.erase(item)
+		changed.emit(list())
 
 	func has(item: String) -> bool:
 		return data.has(item)
+
+	func list() -> Array:
+		return data.keys()
 
 ## How many moves the player has per loop.
 const MOVES_PER_LOOP: int = 28

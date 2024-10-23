@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5h2j6jrbdq4r"]
+[gd_scene load_steps=8 format=3 uid="uid://b5h2j6jrbdq4r"]
 
 [ext_resource type="Script" path="res://modules/hud/hud.gd" id="1_7asgq"]
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="2_5fx7h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://modules/hud/states/conversation.gd" id="4_j7jmo"]
 [ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="4_rohaq"]
 [ext_resource type="Script" path="res://modules/hud/states/movement.gd" id="5_lk7h3"]
+[ext_resource type="Script" path="res://modules/hud/classes/inventory.gd" id="6_mg782"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -43,6 +44,18 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="Inventory" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -460.0
+offset_bottom = 32.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
+alignment = 2
+script = ExtResource("6_mg782")
 
 [node name="LoopCounter" type="HBoxContainer" parent="MarginContainer/Control"]
 layout_mode = 1
