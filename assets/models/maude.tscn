@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvrqclmvmmh83"]
+
+[ext_resource type="Script" path="res://assets/models/maude.gd" id="1_ue2qf"]
+[ext_resource type="PackedScene" uid="uid://cqjpcneyj38sv" path="res://assets/models/maude_model.tscn" id="1_urgkt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ocuj"]
+radius = 0.248224
+height = 1.70137
+
+[node name="Maude" type="Node3D"]
+script = ExtResource("1_ue2qf")
+
+[node name="Maudel" parent="." instance=ExtResource("1_urgkt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0199999, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81537, 0)
+shape = SubResource("CapsuleShape3D_7ocuj")

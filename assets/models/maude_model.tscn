@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqjpcneyj38sv"]
+
+[ext_resource type="PackedScene" uid="uid://brgvf6y1jcrkt" path="res://assets/models/maude.glb" id="1_o6ibq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih7ce"]
+shading_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f06db"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Maudel" instance=ExtResource("1_o6ibq")]
+
+[node name="Haircards" parent="." index="0"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_ih7ce")
+
+[node name="HG_Body_001" parent="." index="1"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_f06db")
+
+[node name="HG_Eyes_001" parent="." index="2"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_ih7ce")
