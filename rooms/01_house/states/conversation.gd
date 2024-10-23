@@ -6,6 +6,8 @@ extends State
 @onready var dialogue_start: AudioStreamPlayer = AudioStreamPlayer.new()
 @onready var dialogue_progress: AudioStreamPlayer = AudioStreamPlayer.new()
 
+var brain: ConversationBrain
+
 
 func _ready():
 	consume_move_beep.stream = load("res://assets/sfx/move_spend.wav")
@@ -18,6 +20,9 @@ func enter():
 	house.hud.state_machine.swap("Blank")
 	house.player.state_machine.swap("Frozen")
 
+	dialogue_start.play()
+	brain.next()
+
 
 func setup(data):
 	get_tree().root.add_child(consume_move_beep)
@@ -25,7 +30,7 @@ func setup(data):
 	get_tree().root.add_child(dialogue_progress)
 
 	var useable: Useable = data.useable
-	var brain: ConversationBrain = ConversationBrain.new(useable)
+	brain = ConversationBrain.new(useable)
 
 	brain.spoke.connect(func (id, speaker):
 		if not dialogue_start.playing:
@@ -43,6 +48,3 @@ func setup(data):
 		if ProgressManager.moves_left > 0:
 			state_machine.swap("Movement")
 	)
-
-	dialogue_start.play()
-	brain.next()

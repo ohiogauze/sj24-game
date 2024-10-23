@@ -4,8 +4,13 @@ extends Area3D
 ## Counts moves when player passes through.
 
 
+# @export var useable: Useable
+@export var logic_id: String
+
 const MIN_DISTANCE = 1.0
 const MAX_DISTANCE = 2.5
+
+const UseableScript = preload("res://classes/interactive/useable.gd")
 
 @onready var beep: AudioStreamPlayer3D = AudioStreamPlayer3D.new()
 
@@ -19,6 +24,13 @@ func _ready() -> void:
 			return
 
 		if body is Player:
+			if logic_id != "":
+				var useable = Area3D.new()
+				useable.set_script(UseableScript)
+				useable.logic_id = logic_id
+				ProgressManager.report_usage(useable)
+				return
+
 			beep.pitch_scale = 0.96 + 0.08 * randf()
 			beep.play()
 			ProgressManager.consume_move()
