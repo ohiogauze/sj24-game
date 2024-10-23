@@ -18,10 +18,6 @@ func enter():
 
 		house.hud.state_machine.push("Blank")
 
-		var we: WorldEnvironment = house.get_node("WorldEnvironment")
-		we.environment.ambient_light_source = Environment.AMBIENT_SOURCE_DISABLED
-		for light in house.get_node("Lights").get_children():
-			light.queue_free()
 		house.get_node("Static").play()
 		var fm = house.get_node("FailureModels")
 		fm.show()
