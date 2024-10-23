@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=42 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="5_4xrjg"]
 [ext_resource type="PackedScene" uid="uid://dmx8b4sw6bn8s" path="res://objects/cupboard/cupboard.tscn" id="5_t3hu2"]
 [ext_resource type="PackedScene" uid="uid://dp6ihspjeug05" path="res://modules/door/door.tscn" id="5_wrobu"]
-[ext_resource type="PackedScene" uid="uid://6yctjiffv1yc" path="res://objects/closet/closet.tscn" id="6_1f4ix"]
 [ext_resource type="PackedScene" uid="uid://t54kyl8fuxxb" path="res://modules/portals/single_width_portal.tscn" id="6_5p83s"]
 [ext_resource type="Script" path="res://rooms/01_house/states/intro.gd" id="6_gqxir"]
 [ext_resource type="PackedScene" uid="uid://er01i1j8kovx" path="res://objects/clock/clock.tscn" id="6_i7l0i"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="8_cdra5"]
 [ext_resource type="Script" path="res://rooms/01_house/states/movement.gd" id="8_do8sy"]
 [ext_resource type="PackedScene" uid="uid://b0ax6acno0b71" path="res://objects/staticDoor/static_door.tscn" id="10_87qds"]
+[ext_resource type="Script" path="res://classes/interactive/useable.gd" id="10_psrqn"]
 [ext_resource type="PackedScene" uid="uid://clhcstmh05er8" path="res://modules/conversation/conversation_display.tscn" id="10_rwivb"]
 [ext_resource type="Script" path="res://rooms/01_house/states/pause.gd" id="16_h8ak8"]
 [ext_resource type="AudioStream" uid="uid://bq1h5m0t7takl" path="res://assets/bgm/cold-night.ogg" id="17_yqgjt"]
@@ -73,6 +73,20 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.7865, 0.75799, 1, 1)
 ambient_light_energy = 0.05
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ftwi"]
+size = Vector3(1, 2.21924, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3qit3"]
+size = Vector3(1, 2.07227, 0.200928)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rpp7n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41w4o"]
+size = Vector3(0.530823, 1.86707, 0.804688)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2mse8"]
+size = Vector3(0.045166, 0.458496, 0.440063)
 
 [node name="House" type="Node"]
 script = ExtResource("1_mxwit")
@@ -252,6 +266,7 @@ portal_path = NodePath("../../Portals/Bathroom")
 
 [node name="HallwayCloset" parent="Doors" instance=ExtResource("5_wrobu")]
 transform = Transform3D(0.999936, 0, -0.0112744, 0, 1, 0, 0.0112744, 0, 0.999936, -1.99014, 0, -1.51283)
+visible = false
 goes_to = "Hallway Closet"
 logic_id = "door_hallway_closet"
 portal_path = NodePath("")
@@ -261,9 +276,6 @@ portal_path = NodePath("")
 [node name="Clock" parent="Objects" instance=ExtResource("6_i7l0i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1.37964, -6)
 
-[node name="Closet" parent="Objects" instance=ExtResource("6_1f4ix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -9)
-
 [node name="Cupboard" parent="Objects" instance=ExtResource("5_t3hu2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.74061, 0, -2)
 
@@ -272,6 +284,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00947, 0, -1.45673)
 
 [node name="StaticDoor2" parent="Objects" instance=ExtResource("10_87qds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00521767, 0, -0.466274)
+
+[node name="LoungeCabinet" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42878, 0, -5.00484)
+script = ExtResource("10_psrqn")
+title = "Cabinet"
+logic_id = "obj_lounge_cabinet"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/LoungeCabinet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0828767, 1.14052, -0.441605)
+shape = SubResource("BoxShape3D_5ftwi")
+
+[node name="BedroomCloset" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56425, 0, -5.9881)
+script = ExtResource("10_psrqn")
+title = "Bedroom Closet"
+logic_id = "obj_bedroom_closet"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/BedroomCloset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105603, 1.17476, -0.00720215)
+shape = SubResource("BoxShape3D_3qit3")
+
+[node name="Altar" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52437, 0, -1.4012)
+script = ExtResource("10_psrqn")
+title = "Altar"
+logic_id = "obj_altar"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Altar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0996952, 0.61117, 0.260037)
+shape = SubResource("BoxShape3D_rpp7n")
+
+[node name="RedMan" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66248, 0, -0.997761)
+script = ExtResource("10_psrqn")
+title = "The Red Man"
+logic_id = "obj_red_man"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/RedMan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.145382, 1.0533, 0.0976563)
+shape = SubResource("BoxShape3D_41w4o")
+
+[node name="SmokeAlarm" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49971, -4.71539)
+script = ExtResource("10_psrqn")
+title = "Smoke Alarm"
+logic_id = "obj_smoke_alarm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/SmokeAlarm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0366414, 0.270752, -0.0216675)
+shape = SubResource("BoxShape3D_2mse8")
 
 [node name="Portals" type="Node" parent="."]
 
