@@ -4,12 +4,19 @@ extends Control
 
 ## Black curtain.
 @onready var curtain: Curtain = $Curtain
+## Pause screen.
+@onready var pause_screen = $Screens/PauseMenu
 ## All screens to display.
 @onready var screens: TabContainer = $Screens
 
 
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
+
+	pause_screen.button_pressed.connect(func ():
+		$BGM.stop()
+		$Accent.play()
+	)
 
 	for screen in screens.get_children():
 		screens.current_tab = screen.get_index()
