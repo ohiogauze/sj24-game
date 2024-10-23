@@ -390,15 +390,18 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="GuestBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -7)
+logic_id = "portal_guest_bedroom"
 
 [node name="MasterBedroom" parent="Portals" instance=ExtResource("6_5p83s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -3)
+logic_id = "portal_master_bedroom"
 
 [node name="Kitchen" parent="Portals" instance=ExtResource("7_og2be")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -6.5)
 
 [node name="LivingRoom" parent="Portals" instance=ExtResource("7_og2be")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3.5)
+logic_id = "portal_living_room"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("5_4xrjg")
