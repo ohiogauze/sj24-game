@@ -14,7 +14,7 @@ config/name="It Remains"
 run/main_scene="res://entrypoint.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=240
-config/icon="res://assets/system/icon.svg"
+config/icon="res://assets/sprites/branding/logo.png"
 
 [autoload]
 
