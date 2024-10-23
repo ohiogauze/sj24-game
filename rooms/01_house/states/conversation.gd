@@ -45,8 +45,6 @@ func setup(data):
 
 		if not useable.logic_id.begins_with("scr_"):
 			ProgressManager.consume_move()
-			consume_move_beep.pitch_scale = 0.96 + 0.08 * randf()
-			consume_move_beep.play()
 
 		if ProgressManager.moves_left > 0:
 			state_machine.pop()

@@ -46,6 +46,14 @@ signal useable_activated(id: String)
 ## Alerts that a Useable has been used.
 signal useable_used(useable: Useable)
 
+var beep := AudioStreamPlayer.new()
+var failure := AudioStreamPlayer.new()
+
+
+func _ready() -> void:
+	beep.stream = load("res://assets/sfx/move_spend.wav")
+	failure.stream = load("res://assets/sfx/failure.wav")
+
 
 ### LOOP FUNCTIONS
 
@@ -57,12 +65,20 @@ func consume_move():
 	# End the loop when there are no moves left.
 	if moves_left <= 0:
 		end_loop()
+	else:
+		get_tree().root.add_child(beep)
+		beep.pitch_scale = 0.96 + 0.08 * randf()
+		beep.play()
 
 
 ## End the loop whenever.
 func end_loop():
+	get_tree().root.add_child(failure)
+	failure.play()
 	loop_ended.emit()
+	true_end_loop()
 
+func true_end_loop():
 	# For now, just reset all and restart room.
 	flags.data = {}
 	items.data = {}

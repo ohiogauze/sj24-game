@@ -16,9 +16,6 @@ const UseableScript = preload("res://classes/interactive/useable.gd")
 
 
 func _ready() -> void:
-	beep.stream = load("res://assets/sfx/move_spend.wav")
-	add_child(beep)
-
 	body_entered.connect(func (body):
 		if not visible:
 			return
@@ -31,8 +28,6 @@ func _ready() -> void:
 				ProgressManager.report_usage(useable)
 				return
 
-			beep.pitch_scale = 0.96 + 0.08 * randf()
-			beep.play()
 			ProgressManager.consume_move()
 	)
 
