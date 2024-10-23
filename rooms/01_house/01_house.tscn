@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=46 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -114,6 +114,9 @@ size = Vector3(0.530823, 1.86707, 0.804688)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2mse8"]
 size = Vector3(0.045166, 0.458496, 0.440063)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2kkm"]
+size = Vector3(0.893555, 1, 0.815552)
 
 [node name="House" type="Node"]
 script = ExtResource("1_mxwit")
@@ -231,7 +234,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6aqm5")
 shape = SubResource("ConcavePolygonShape3D_rh48e")
 
 [node name="Player" parent="." instance=ExtResource("2_tucsf")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.5, 0, -0.71)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.15058, 0, -0.897078)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_moc6t")
@@ -382,6 +385,16 @@ logic_id = "obj_smoke_alarm"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/SmokeAlarm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0366414, 0.270752, -0.0216675)
 shape = SubResource("BoxShape3D_2mse8")
+
+[node name="TV" type="Area3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.50346, 0, -0.163579)
+script = ExtResource("10_psrqn")
+title = "Television"
+logic_id = "obj_television"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/TV"]
+transform = Transform3D(0.894006, 0, -0.448056, 0, 1, 0, 0.448056, 0, 0.894006, 0.0363951, 0.95076, 0.0461641)
+shape = SubResource("BoxShape3D_s2kkm")
 
 [node name="Portals" type="Node" parent="."]
 
