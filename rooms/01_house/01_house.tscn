@@ -150,8 +150,14 @@ shape = SubResource("ConcavePolygonShape3D_vggt5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StructureModel/TV/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2hc7d")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="StructureModel/TV" index="1"]
-transform = Transform3D(0.266347, 0, 0.963877, 0, 0.477654, 0, -0.963877, 0, 0.266347, -0.317105, -0.187954, 0.0363865)
+[node name="OmniLight3D" type="OmniLight3D" parent="StructureModel/TV" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335886, 0.200914, -0.0750861)
+light_color = Color(0.305882, 1, 1, 1)
+light_energy = 0.505
+omni_range = 0.779109
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StructureModel/TV" index="2"]
+transform = Transform3D(0.266347, 0, 0.963877, 0, 1, 0, -0.963877, 0, 0.266347, -0.317105, -0.187954, 0.036386)
 light_color = Color(0, 0.951636, 0.956828, 1)
 light_energy = 6.429
 light_indirect_energy = 1.408
@@ -160,12 +166,6 @@ light_specular = 0.31
 shadow_enabled = true
 spot_range = 3.69275
 spot_angle = 64.9074
-
-[node name="OmniLight3D" type="OmniLight3D" parent="StructureModel/TV" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335886, 0.200914, -0.0750861)
-light_color = Color(0.305882, 1, 1, 1)
-light_energy = 0.505
-omni_range = 0.779109
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StructureModel/knifeBlock" index="0"]
 
