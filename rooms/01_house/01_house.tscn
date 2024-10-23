@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=49 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -120,12 +120,6 @@ size = Vector3(0.045166, 0.458496, 0.440063)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s2kkm"]
 size = Vector3(0.893555, 1, 0.815552)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o7gfx"]
-size = Vector3(0.500244, 0.373413, 0.373627)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xyms"]
-size = Vector3(0.276123, 0.296234, 0.531006)
 
 [node name="House" type="Node"]
 script = ExtResource("1_mxwit")
@@ -410,26 +404,6 @@ logic_id = "obj_television"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/TV"]
 transform = Transform3D(0.894006, 0, -0.448056, 0, 1, 0, 0.448056, 0, 0.894006, 0.0363951, 0.95076, 0.0461641)
 shape = SubResource("BoxShape3D_s2kkm")
-
-[node name="KnifeBlock" type="Area3D" parent="Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05391, 1.01246, -4.87342)
-script = ExtResource("10_psrqn")
-title = "Knife Block"
-logic_id = "obj_knife_block"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/KnifeBlock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154415, 0.113953, -0.0107574)
-shape = SubResource("BoxShape3D_o7gfx")
-
-[node name="FridgeNote" type="Area3D" parent="Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60358, 1.43282, -7.4944)
-script = ExtResource("10_psrqn")
-title = "Fridge Note"
-logic_id = "obj_fridge_note"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/FridgeNote"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106449, 0.135517, -0.232487)
-shape = SubResource("BoxShape3D_0xyms")
 
 [node name="Portals" type="Node" parent="."]
 
