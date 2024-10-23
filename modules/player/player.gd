@@ -11,3 +11,8 @@ extends CharacterBody3D
 }
 ## State machine.
 @onready var state_machine: StateMachine = $StateMachine
+
+
+func _ready() -> void:
+	controllers.camera.camera.rotation.y = rotation.y
+	rotation.y = 0

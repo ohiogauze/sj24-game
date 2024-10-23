@@ -231,7 +231,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6aqm5")
 shape = SubResource("ConcavePolygonShape3D_rh48e")
 
 [node name="Player" parent="." instance=ExtResource("2_tucsf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39973, 0, -0.405817)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.5, 0, -0.71)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_moc6t")
