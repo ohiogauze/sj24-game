@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=45 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
 [ext_resource type="PackedScene" uid="uid://u0ruqj7f2seb" path="res://modules/player/player.tscn" id="2_tucsf"]
 [ext_resource type="PackedScene" uid="uid://b5h2j6jrbdq4r" path="res://modules/hud/hud.tscn" id="4_ef6py"]
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="5_4xrjg"]
-[ext_resource type="PackedScene" uid="uid://dmx8b4sw6bn8s" path="res://objects/cupboard/cupboard.tscn" id="5_t3hu2"]
 [ext_resource type="PackedScene" uid="uid://dp6ihspjeug05" path="res://modules/door/door.tscn" id="5_wrobu"]
 [ext_resource type="PackedScene" uid="uid://t54kyl8fuxxb" path="res://modules/portals/single_width_portal.tscn" id="6_5p83s"]
 [ext_resource type="Script" path="res://rooms/01_house/states/intro.gd" id="6_gqxir"]
@@ -68,6 +67,31 @@ data = PackedVector3Array(0.5, 0, 0.25, 0.5, 0.75, 0.25, 0.5, 0.75, 0, 0.5, 0, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rogue"]
 data = PackedVector3Array(2.5313, -0.125, 7.75, 2.5313, 0.875, 7.75, 2.5313, 0.875, 7.25, 2.5313, -0.125, 7.75, 2.5313, 0.875, 7.25, 2.5313, -0.125, 7.25)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a2yxn"]
+noise_type = 2
+frequency = 0.1565
+offset = Vector3(-7.3, 0, 0)
+fractal_type = 3
+fractal_octaves = 10
+fractal_lacunarity = 69.83
+fractal_gain = 0.965
+fractal_weighted_strength = 1.0
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bcfa7"]
+width = 513
+height = 1000
+invert = true
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_a2yxn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6aqm5"]
+albedo_color = Color(0.343087, 0.273663, 0.290608, 1)
+albedo_texture = SubResource("NoiseTexture2D_bcfa7")
+metallic_specular = 0.0
+roughness = 0.0
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rh48e"]
 data = PackedVector3Array(-6, 0, -9.0001, -6, 0, -0.0001, 0, 0, -0.0001, -6, 0, -9.0001, 0, 0, -0.0001, 0, 0, -9.0001, 5, 0, -5.0001, 5, 0, 1, 9, 0, 1, 5, 0, -5.0001, 9, 0, 1, 9, 0, -5.0001, 3, 0, -8.0001, 3, 0, -0.0001, 5, 0, -0.0001, 3, 0, -8.0001, 5, 0, -0.0001, 5, 0, -8.0001, 0, 0, -11, 0, 0, -0.0001, 3, 0, -0.0001, 0, 0, -11, 3, 0, -0.0001, 3, 0, -11)
 
@@ -126,6 +150,23 @@ shape = SubResource("ConcavePolygonShape3D_vggt5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StructureModel/TV/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2hc7d")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="StructureModel/TV" index="1"]
+transform = Transform3D(0.266347, 0, 0.963877, 0, 0.477654, 0, -0.963877, 0, 0.266347, -0.317105, -0.187954, 0.0363865)
+light_color = Color(0, 0.951636, 0.956828, 1)
+light_energy = 6.429
+light_indirect_energy = 1.408
+light_volumetric_fog_energy = 1.05
+light_specular = 0.31
+shadow_enabled = true
+spot_range = 3.69275
+spot_angle = 64.9074
+
+[node name="OmniLight3D" type="OmniLight3D" parent="StructureModel/TV" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335886, 0.200914, -0.0750861)
+light_color = Color(0.305882, 1, 1, 1)
+light_energy = 0.505
+omni_range = 0.779109
+
 [node name="StaticBody3D" type="StaticBody3D" parent="StructureModel/knifeBlock" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StructureModel/knifeBlock/StaticBody3D"]
@@ -180,6 +221,9 @@ shape = SubResource("ConcavePolygonShape3D_45hq1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StructureModel/phone/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rogue")
+
+[node name="ceiling" parent="StructureModel" index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6aqm5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StructureModel/ceiling" index="0"]
 
@@ -273,8 +317,7 @@ logic_id = "door_bathroom"
 portal_path = NodePath("../../Portals/Bathroom")
 
 [node name="HallwayCloset" parent="Doors" instance=ExtResource("5_wrobu")]
-transform = Transform3D(0.999936, 0, -0.0112744, 0, 1, 0, 0.0112744, 0, 0.999936, -1.99014, 0, -1.51283)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99014, 0, -1.51283)
 goes_to = "Hallway Closet"
 logic_id = "door_hallway_closet"
 portal_path = NodePath("")
@@ -283,9 +326,6 @@ portal_path = NodePath("")
 
 [node name="Clock" parent="Objects" instance=ExtResource("6_i7l0i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1.37964, -6)
-
-[node name="Cupboard" parent="Objects" instance=ExtResource("5_t3hu2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.74061, 0, -2)
 
 [node name="StaticDoor" parent="Objects" instance=ExtResource("10_87qds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00947, 0, -1.45673)
