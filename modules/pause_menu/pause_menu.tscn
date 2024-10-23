@@ -3,14 +3,11 @@
 [ext_resource type="Script" path="res://modules/pause_menu/pause_menu.gd" id="1_3xt56"]
 [ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="1_7lir2"]
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="2_6otoc"]
+[ext_resource type="Texture2D" uid="uid://c07kjfeof1y7g" path="res://assets/sprites/branding/It_Remains_Logo.png" id="3_01bhm"]
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="3_xpmk3"]
 
 [sub_resource type="Environment" id="Environment_31y5u"]
 background_mode = 1
-
-[sub_resource type="FontVariation" id="FontVariation_xv7h5"]
-base_font = ExtResource("1_7lir2")
-spacing_glyph = 8
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -33,7 +30,9 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 own_world_3d = true
+handle_input_locally = false
 size = Vector2i(640, 360)
+render_target_update_mode = 4
 
 [node name="default" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_6otoc")]
 
@@ -68,20 +67,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -88.0
-offset_top = -112.0
+offset_top = -161.0
 offset_right = 320.0
-offset_bottom = 112.0
+offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 0
 
-[node name="Text" type="Label" parent="VBoxContainer"]
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_xv7h5")
-theme_override_font_sizes/font_size = 38
-text = "IT REMAINS"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_01bhm")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
