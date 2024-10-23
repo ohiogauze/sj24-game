@@ -66,6 +66,7 @@ func end_loop():
 	# For now, just reset all and restart room.
 	flags.data = {}
 	items.data = {}
+	_logical_counters = []
 	get_tree().reload_current_scene()
 
 ## Start a new loop.
