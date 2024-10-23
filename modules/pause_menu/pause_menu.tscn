@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgk7nmhhrqdp7"]
+[gd_scene load_steps=7 format=3 uid="uid://bgk7nmhhrqdp7"]
 
 [ext_resource type="Script" path="res://modules/pause_menu/pause_menu.gd" id="1_3xt56"]
 [ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="1_7lir2"]
+[ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="2_6otoc"]
 [ext_resource type="Script" path="res://classes/ui/curtain.gd" id="3_xpmk3"]
+
+[sub_resource type="Environment" id="Environment_31y5u"]
+background_mode = 1
+
+[sub_resource type="FontVariation" id="FontVariation_xv7h5"]
+base_font = ExtResource("1_7lir2")
+spacing_glyph = 8
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -14,14 +22,43 @@ grow_vertical = 2
 script = ExtResource("1_3xt56")
 metadata/_tab_index = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.281359, 0.0706335, 0.0835989, 1)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+size = Vector2i(640, 360)
+
+[node name="default" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_6otoc")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.953717, -0.145785, 0.263003, 0, 0.87462, 0.48481, -0.300706, 0.462371, -0.83414, 6.458, 1.716, -3.874)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_31y5u")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 8.12166, 1.16966, -0.357969)
+light_color = Color(0.305882, 1, 1, 1)
+light_energy = 0.505
+omni_range = 0.779109
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.712602, 0, 0.701569, 0, 1, 0, -0.701569, 0, 0.712602, 8.08219, 0.780796, -0.252041)
+light_color = Color(0, 0.951636, 0.956828, 1)
+light_energy = 6.429
+light_indirect_energy = 1.408
+light_volumetric_fog_energy = 1.05
+light_specular = 0.31
+shadow_enabled = true
+spot_range = 3.69275
+spot_angle = 64.9074
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,19 +67,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -98.0
-offset_right = 204.0
-offset_bottom = 98.0
+offset_left = -88.0
+offset_top = -112.0
+offset_right = 320.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
 [node name="Text" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_7lir2")
+theme_override_fonts/font = SubResource("FontVariation_xv7h5")
 theme_override_font_sizes/font_size = 38
-text = "<GAME NAME HERE>"
+text = "IT REMAINS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -70,6 +107,7 @@ theme_override_font_sizes/font_size = 38
 text = "Quit Game"
 
 [node name="Curtain" type="ColorRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
