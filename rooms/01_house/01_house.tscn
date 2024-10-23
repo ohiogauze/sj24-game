@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=54 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d38mf7g3uhn3g" path="res://assets/sfx/stab.wav" id="4_5ethf"]
 [ext_resource type="PackedScene" uid="uid://b5h2j6jrbdq4r" path="res://modules/hud/hud.tscn" id="4_ef6py"]
 [ext_resource type="Script" path="res://classes/state_machine/state_machine.gd" id="5_4xrjg"]
+[ext_resource type="AudioStream" uid="uid://t4lg0ngkvcpy" path="res://assets/sfx/smoke_alarm.wav" id="5_hcaf3"]
 [ext_resource type="PackedScene" uid="uid://dp6ihspjeug05" path="res://modules/door/door.tscn" id="5_wrobu"]
 [ext_resource type="PackedScene" uid="uid://t54kyl8fuxxb" path="res://modules/portals/single_width_portal.tscn" id="6_5p83s"]
 [ext_resource type="Script" path="res://rooms/01_house/states/intro.gd" id="6_gqxir"]
@@ -145,6 +146,10 @@ parameters/looping = true
 
 [node name="Stab" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5ethf")
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505382, 1.77895, -4.75398)
+stream = ExtResource("5_hcaf3")
 
 [node name="StructureModel" parent="." instance=ExtResource("1_h3fej")]
 
@@ -517,7 +522,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 0
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.5, 0, -1.111)
 
 [node name="Maudel" parent="FailureModels/Maude" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0197605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0159289, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="FailureModels"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0.884, -2.407)

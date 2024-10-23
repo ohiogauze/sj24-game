@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfj1wklw2noq4"]
+
+[ext_resource type="Script" path="res://modules/credits/credits.gd" id="1_olqs1"]
+[ext_resource type="AudioStream" uid="uid://3g8vgxb4fbmn" path="res://assets/sfx/static_loop.ogg" id="1_vt31d"]
+[ext_resource type="Texture2D" uid="uid://c07kjfeof1y7g" path="res://assets/sprites/branding/It_Remains_Logo.png" id="2_pqmb8"]
+[ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="3_e2w5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fq48o"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_olqs1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_vt31d")
+autoplay = true
+
+[node name="Screens" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_fq48o")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fq48o")
+current_tab = 2
+tabs_visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="Screens"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="Screens/CenterContainer"]
+custom_minimum_size = Vector2(600, 280)
+layout_mode = 2
+texture = ExtResource("2_pqmb8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SB" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "SUNNY BERRY
+
+Narrative Design
+Logic Scripting
+Writing
+Art"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 1
+
+[node name="JF" type="Label" parent="Screens"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "JOSEF FRANK
+
+Implementation
+Sound Effects
+Programming
+Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 2
+
+[node name="BC" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "BLAKE CRANE
+
+Store Page Design
+Branding"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 3
+
+[node name="SJ" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "Created for
+SCREAM JAM 2024"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 4
+
+[node name="Thanks" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "Thank you
+for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 5
+
+[node name="Thanks2" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+text = "Thank you
+for playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 6
+
+[node name="Blank" type="Label" parent="Screens"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_e2w5a")
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_tab_index = 7

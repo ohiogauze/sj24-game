@@ -11,6 +11,8 @@ extends Node
 @onready var curtain: Curtain = $Curtain
 ## The heads-up display.
 @onready var hud: HUD = $HUD
+## The demonic lady.
+@onready var maude: Node3D = $Objects/Maude
 ## The player character.
 @onready var player: Player = $Player
 ## State machine.
@@ -23,6 +25,27 @@ func _ready() -> void:
 	ProgressManager.loop_ended.connect(fail)
 	$FailureModels.hide()
 	$Red.hide()
+	maude.hide()
+	maude.position.y += 50
+
+	ProgressManager.flag_tripped.connect(func (flag: String):
+		match flag:
+			"smoke_alarm_on":
+				do_smoke_alarm()
+
+			"has_knife":
+				$StructureModel/knife.hide()
+
+			"killed_her":
+				bgm.stop()
+				curtain.modulate.a = 1.0
+				curtain.show()
+				hud.state_machine.swap("Blank")
+				player.state_machine.swap("Frozen")
+				$Stab.play()
+				await get_tree().create_timer(3.0).timeout
+				get_tree().change_scene_to_file("res://modules/credits/credits.tscn")
+	)
 
 
 func fail() -> void:
@@ -34,3 +57,9 @@ func start_conversation(useable: Useable) -> void:
 		"conversation_display": conversation_display,
 		"useable": useable,
 	})
+
+
+func do_smoke_alarm() -> void:
+	maude.show()
+	maude.position.y = 0
+	$Alarm.play()

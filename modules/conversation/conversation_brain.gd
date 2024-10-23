@@ -119,6 +119,7 @@ func next():
 				if step.is_negated\
 				else ProgressManager.flags.add
 			callable.call(step.flag)
+			ProgressManager.trip_flag(step.flag)
 			next()
 
 		"accumulate":

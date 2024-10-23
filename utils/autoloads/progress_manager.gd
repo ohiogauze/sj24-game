@@ -37,6 +37,7 @@ var moves_left := MOVES_PER_LOOP
 
 ## Alerts that a door should be opened.
 signal door_opened(door: String)
+signal flag_tripped(flag: String)
 ## Alerts that the loop end conditions have been met.
 signal loop_ended
 ## Alerts that the number of moves left has changed.
@@ -117,3 +118,6 @@ func open_door(door: String) -> void:
 ## Bubbles up a Useable usage.
 func report_usage(useable: Useable) -> void:
 	useable_used.emit(useable)
+
+func trip_flag(flag: String):
+	flag_tripped.emit(flag)
