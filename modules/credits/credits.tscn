@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfj1wklw2noq4"]
+[gd_scene load_steps=7 format=3 uid="uid://dfj1wklw2noq4"]
 
 [ext_resource type="Script" path="res://modules/credits/credits.gd" id="1_olqs1"]
 [ext_resource type="AudioStream" uid="uid://3g8vgxb4fbmn" path="res://assets/sfx/static_loop.ogg" id="1_vt31d"]
 [ext_resource type="Texture2D" uid="uid://c07kjfeof1y7g" path="res://assets/sprites/branding/It_Remains_Logo.png" id="2_pqmb8"]
 [ext_resource type="FontFile" uid="uid://dr43vf0re3mqw" path="res://assets/fonts/venice_classic/VeniceClassic.ttf" id="3_e2w5a"]
+[ext_resource type="AudioStream" uid="uid://qe5sjk1py2hl" path="res://assets/sfx/accent.wav" id="3_lv1tq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fq48o"]
 
@@ -16,9 +17,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_olqs1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_vt31d")
 autoplay = true
+
+[node name="Accent" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lv1tq")
 
 [node name="Screens" type="TabContainer" parent="."]
 layout_mode = 1
@@ -34,7 +38,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_fq48o")
 theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_fq48o")
 theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_fq48o")
 theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fq48o")
-current_tab = 2
+current_tab = 5
 tabs_visible = false
 
 [node name="CenterContainer" type="CenterContainer" parent="Screens"]
@@ -65,6 +69,7 @@ vertical_alignment = 1
 metadata/_tab_index = 1
 
 [node name="JF" type="Label" parent="Screens"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_e2w5a")
 theme_override_font_sizes/font_size = 38
@@ -103,7 +108,6 @@ vertical_alignment = 1
 metadata/_tab_index = 4
 
 [node name="Thanks" type="Label" parent="Screens"]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_e2w5a")
 theme_override_font_sizes/font_size = 38

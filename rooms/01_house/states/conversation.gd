@@ -47,5 +47,9 @@ func setup(data):
 			ProgressManager.consume_move()
 
 		if ProgressManager.moves_left > 0 or useable.logic_id.begins_with("scr_"):
-			state_machine.pop()
+			print(state_machine.history.size())
+			if state_machine.history.size() > 1 or useable.logic_id.begins_with("scr_"):
+				state_machine.pop()
+			else:
+				state_machine.swap("Movement")
 	)
