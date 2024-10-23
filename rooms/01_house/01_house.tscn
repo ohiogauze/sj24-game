@@ -123,7 +123,6 @@ script = ExtResource("1_mxwit")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yqgjt")
-autoplay = true
 parameters/looping = true
 
 [node name="StructureModel" parent="." instance=ExtResource("1_h3fej")]
