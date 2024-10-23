@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cjcvbgwobqqsr"]
+[gd_scene load_steps=54 format=3 uid="uid://cjcvbgwobqqsr"]
 
 [ext_resource type="PackedScene" uid="uid://cobgwtpb6pl28" path="res://rooms/01_house/model/01_house.gltf" id="1_h3fej"]
 [ext_resource type="Script" path="res://rooms/01_house/01_house.gd" id="1_mxwit"]
@@ -105,6 +105,10 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.7865, 0.75799, 1, 1)
 ambient_light_energy = 0.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_07vki"]
+radius = 0.289342
+height = 1.86407
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ftwi"]
 size = Vector3(1, 2.21924, 1)
@@ -347,6 +351,18 @@ portal_path = NodePath("")
 
 [node name="Objects" type="Node" parent="."]
 
+[node name="Maude" parent="Objects" instance=ExtResource("22_gny3w")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, -7)
+
+[node name="Maude" type="Area3D" parent="Objects/Maude"]
+script = ExtResource("10_psrqn")
+title = "Ms. Maude"
+logic_id = "obj_maude"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Maude/Maude"]
+transform = Transform3D(0.894006, 0, -0.448056, 0, 1, 0, 0.448056, 0, 0.894006, 0, 0.808435, 0)
+shape = SubResource("CapsuleShape3D_07vki")
+
 [node name="Clock" parent="Objects" instance=ExtResource("6_i7l0i")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1.37964, -6)
 
@@ -485,7 +501,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5, 0
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.5, 0, -1.111)
 
 [node name="Maudel" parent="FailureModels/Maude" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000787892, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000217894, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FailureModels/Maude/Maudel" index="3"]
 transform = Transform3D(-4.29719e-08, 0.19, -3.12332e-08, -0.174844, -2.73203e-08, 0.074361, 0.074361, 4.55599e-08, 0.174844, -0.405824, 0.829896, 0.0999788)
